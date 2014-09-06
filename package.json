@@ -1,0 +1,23 @@
+{
+  "name": "kenobi",
+  "version": "0.1.0",
+  "description": "Work with external objects and arrays in view engines",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raphamorim/kenobi.git"
+  },
+  "author": "Raphael Amorim",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/raphamorim/kenobi/issues"
+  },
+  "homepage": "https://github.com/raphamorim/kenobi",
+  "dependencies": {
+    "ejs": "~0.8.5",
+    "request": "^2.42.0"
+  }
+}
