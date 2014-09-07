@@ -20,7 +20,7 @@ The options variable sets the request.
     	headers: {
         	'User-Agent': 'request'
     	},
- 	method: "GET",
+ 		method: "GET",
     	json: true,
     	timeout: 10000
   	};
