@@ -1,4 +1,4 @@
-## Kenobi
+# Kenobi
 
 > Render external objects and array in view engines
 
@@ -17,6 +17,10 @@ The options variable sets the request.
     	auth: {
       		bearer: "XXXXXXX"
     	},
+    	headers: {
+        	'User-Agent': 'request'
+    	},
+ 	method: "GET",
     	json: true,
     	timeout: 10000
   	};
