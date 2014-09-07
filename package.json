@@ -1,7 +1,7 @@
 {
   "name": "kenobi",
-  "version": "0.1.0",
-  "description": "Work with external objects and arrays in view engines",
+  "version": "0.1.1",
+  "description": "Render external objects and array in view engines",
   "main": "index.js",
   "scripts": {
     "test": "npm test"
@@ -18,6 +18,7 @@
   "homepage": "https://github.com/raphamorim/kenobi",
   "dependencies": {
     "ejs": "~0.8.5",
+    "jade": "^1.6.0",
     "request": "^2.42.0"
   }
 }
