@@ -2,6 +2,9 @@
 
 > Render external objects and array in view engines
 
+[![NPM Version](https://img.shields.io/npm/v/express.svg?style=flat)](https://www.npmjs.org/package/kenobi)
+[![Build Status](https://api.travis-ci.org/raphamorim/kenobi.svg)](https://travis-ci.org/raphamorim/kenobi)
+
 ## Install
 
 	npm install kenobi
@@ -65,8 +68,8 @@ For return only response object:
 
 	each post in body.posts
     	li= post.name
-    	
-    	
+
+
 ## Request params
 
 The first argument can be either a `url` or an object. The only required option is `uri`, all others are optional.
