@@ -3,9 +3,17 @@ var Kenobi = (function(req, path, callback) {
 		fs = require('fs'),
 		ejs = require('ejs'),
 		jade = require('jade'),
-		fileExt = path.split('.').pop(),
-		realPath = __dirname + '/../..' + path;
-		str = fs.readFileSync(realPath, 'utf8');
+		fileExt = 'json';
+
+	if (typeof path === 'string') {
+		fileExt = path.split('.').pop();
+
+		var realPath = __dirname + '/../..' + path,
+			str = fs.readFileSync(realPath, 'utf8');
+	}
+
+	if (typeof path === 'function')
+		callback = path;
 
 	request(req, function(error, response, body) {
 		if (fileExt === 'ejs')
@@ -13,7 +21,7 @@ var Kenobi = (function(req, path, callback) {
 	 	else if (fileExt === 'jade')
 	 		return callback(jade.renderFile(realPath, {body: body}));
 	 	else
-	 		return false;
+	 		return callback(body);
 	});
 });
 

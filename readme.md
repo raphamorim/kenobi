@@ -45,6 +45,14 @@ So, then we can treat the object in view. Then a global object is returned. Acce
 
 	</body>
 
+## Get response without view
+
+For return only response object:
+
+	kenobi(options, function(page){
+  		res.send(page);
+  	});
+
 ## Other examples
 
 **Ejs:**

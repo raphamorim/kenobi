@@ -1,5 +1,9 @@
 # Changelog
 
+## Vr. 0.1.2
+
+- Option to return only response without view
+
 ## Vr. 0.1.1
 
 - Support **Jade**

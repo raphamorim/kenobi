@@ -1,6 +1,6 @@
 {
   "name": "kenobi",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Render external objects and array in view engines",
   "main": "index.js",
   "scripts": {
