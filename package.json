@@ -4,7 +4,7 @@
   "description": "Render external objects and array in view engines",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "make test"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,8 @@
     "ejs": "~0.8.5",
     "jade": "^1.6.0",
     "request": "^2.42.0"
+  },
+  "devDependencies": {
+    "mocha": "*"
   }
 }
