@@ -54,7 +54,7 @@ For return only response object:
 
 	kenobi(options, function(page){
   		res.send(page);
-  });
+  	});
 
 ## Callback
 
@@ -62,10 +62,10 @@ page `String` = result of rendering
 
 response `Object` = response from request
 
-  kenobi(options, function(page, response){
-      console.log("Response: " + response);
-      res.send(page);
-  });
+  	kenobi(options, function(page, response){
+      		console.log("Response: " + response);
+      		res.send(page);
+  	});
 
 In Response Object, you can get some data like statusCode, request body...
 
