@@ -68,10 +68,10 @@ For return only response object:
 
 If occurred any error, is sent back a error object:
 
-  kenobi(options, function(response, err){
-     if (err) res.end(err);
-     res.send(response);
-  });
+  	kenobi(options, function(page, err){
+     		if (err) res.end(err);
+     		res.send(page);
+  	});
 
 
 ## Callback
