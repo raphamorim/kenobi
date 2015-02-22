@@ -17,9 +17,9 @@ var Kenobi = (function(req, path, callback) {
 
 	request(req, function(error, response, body) {
 		if (fileExt === 'ejs')
-	 		return callback(ejs.render(str, {body: body}))
+	 		return callback(ejs.render(str, {_: body}))
 	 	else if (fileExt === 'jade')
-	 		return callback(jade.renderFile(realPath, {body: body}))
+	 		return callback(jade.renderFile(realPath, {_: body}))
 	 	else
 	 		return callback(response, error)
 	});

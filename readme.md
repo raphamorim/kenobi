@@ -45,9 +45,9 @@ So, then we can treat the object in view. Then a global object is returned. Acce
 
 	<body>
 
-	<% if (body.posts.length) { %>
+	<% if (_.posts.length) { %>
 		<ul>
-			<% body.posts.forEach(function(post){ %>
+			<% _.posts.forEach(function(post){ %>
 				<li><%= post.name %></li>
 			<% }) %>
 		</ul>
@@ -91,13 +91,13 @@ In Response Object, you can get some data like statusCode, request body...
 
 **Ejs:**
 
-	<% body.posts.forEach(function(post){ %>
+	<% _.posts.forEach(function(post){ %>
 		<li><%= post.name %></li>
 	<% }) %>
 
 **Jade:**
 
-	each post in body.posts
+	each post in _.posts
     	li= post.name
 
 
