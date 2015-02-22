@@ -34,6 +34,13 @@ After it is sent as the first parameter, after is set the page view path.
   		res.end(page); // Response
   	});
 
+Detail: You can sent only the url `string` instead request `object`. However
+the request body act as default ([see default properties](#request-params)), ex:
+
+    kenobi('https://api.producthunt.com/v1/posts', '/views/index.ejs', function(page){
+      res.end(page); // Response
+    });
+
 So, then we can treat the object in view. Then a global object is returned. Accessed by the name of **body**. See how it happens in ejs example:
 
 	<body>
@@ -52,8 +59,8 @@ So, then we can treat the object in view. Then a global object is returned. Acce
 
 For return only response object:
 
-	kenobi(options, function(page, err){
-  	 res.send(page);
+	kenobi(options, function(response, err){
+  	 res.send(response);
   });
 
 
@@ -61,9 +68,9 @@ For return only response object:
 
 If occurred any error, is sent back a error object:
 
-  kenobi(options, function(page, err){
+  kenobi(options, function(response, err){
      if (err) res.end(err);
-     res.send(page);
+     res.send(response);
   });
 
 
@@ -73,7 +80,7 @@ page `String` = result of rendering
 
 response `Object` = response from request
 
-  	kenobi(options, function(page, response, err){
+  	kenobi(options, '../pathTofile.ext', function(page, response, err){
       		console.log("Response: " + response);
       		res.send(page);
   	});
@@ -94,7 +101,7 @@ In Response Object, you can get some data like statusCode, request body...
     	li= post.name
 
 
-## Request params
+## Request Params
 
 The first argument can be either a `url` or an object. The only required option is `uri`, all others are optional.
 
@@ -133,7 +140,7 @@ The first argument can be either a `url` or an object. The only required option 
 - `aws` - `object` containing AWS signing information. Should have the properties `key`, `secret`. Also requires the property `bucket`, unless you’re specifying your `bucket` as part of the path, or the request doesn’t use a bucket (i.e. GET Services)
 
 
-## View engines
+## View Engines
 
 - [Ejs](https://github.com/visionmedia/ejs)
 - [Jade](https://github.com/visionmedia/jade)
