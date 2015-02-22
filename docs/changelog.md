@@ -1,5 +1,9 @@
 # Changelog
 
+## Vr. 0.1.25
+
+- Return error in methods
+
 ## Vr. 0.1.2
 
 - Option to return only response without view

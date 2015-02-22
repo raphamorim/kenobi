@@ -17,11 +17,11 @@ var Kenobi = (function(req, path, callback) {
 
 	request(req, function(error, response, body) {
 		if (fileExt === 'ejs')
-	 		return callback(ejs.render(str, {body: body}), response);
+	 		return callback(ejs.render(str, {body: body}, error))
 	 	else if (fileExt === 'jade')
-	 		return callback(jade.renderFile(realPath, {body: body}), response);
+	 		return callback(jade.renderFile(realPath, {body: body}, error))
 	 	else
-	 		return callback(body, response);
+	 		return callback(body, error)
 	});
 });
 

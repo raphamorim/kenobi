@@ -52,9 +52,20 @@ So, then we can treat the object in view. Then a global object is returned. Acce
 
 For return only response object:
 
-	kenobi(options, function(page){
-  		res.send(page);
-  	});
+	kenobi(options, function(page, err){
+  	 res.send(page);
+  });
+
+
+## Error treatment
+
+If occurred any error, is sent back a error object:
+
+  kenobi(options, function(page, err){
+     if (err) res.end(err);
+     res.send(page);
+  });
+
 
 ## Callback
 
@@ -62,7 +73,7 @@ page `String` = result of rendering
 
 response `Object` = response from request
 
-  	kenobi(options, function(page, response){
+  	kenobi(options, function(page, response, err){
       		console.log("Response: " + response);
       		res.send(page);
   	});
