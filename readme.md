@@ -55,39 +55,48 @@ So, then we can treat the object in view. Then a global object is returned. Acce
 
 	</body>
 
+
 ## Get response without view
 
 For return only response object:
 
 	kenobi(options, function(response, err){
-  	 res.send(response);
+  	 if (err) res.end(err);
+     res.send(response);
   });
 
 
-## Error treatment
+## Send only a local object (without external request) and render in template:
 
-If occurred any error, is sent back a error object:
+    var object = {name: 'luke'};
 
-  	kenobi(options, function(page, err){
-     		if (err) res.end(err);
-     		res.send(page);
-  	});
+    kenobi(object, pathTofile, function(page, response, err){
+        // For local objects cases, response always be null
+
+        if (err) res.end(err);
+        res.end(page);
+    });
 
 
-## Callback
+## Callback Return
 
 page `String` = result of rendering
 
 response `Object` = response from request
 
-  	kenobi(options, '../pathTofile.ext', function(page, response, err){
+error `Object` = error from operation, if not exist must be `null`
+
+  	kenobi(options, pathTofile, function(page, response, err){
       		console.log("Response: " + response);
       		res.send(page);
   	});
 
-In Response Object, you can get some data like statusCode, request body...
+In Response Object, you can access some data like statusCode, body...
 
-## Other examples
+
+## Template Examples
+
+It sent an object to the template with the primary key accessed by an underscore. Examples:
 
 **Ejs:**
 
@@ -101,7 +110,7 @@ In Response Object, you can get some data like statusCode, request body...
     	li= post.name
 
 
-## Request Params
+## Request Object (optional params)
 
 The first argument can be either a `url` or an object. The only required option is `uri`, all others are optional.
 
