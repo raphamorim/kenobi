@@ -51,6 +51,10 @@ var Kenobi = (function(req, path, callback) {
 	 	}
 	 	else if (fileExt === 'jade'){
 	 		return callback(jade.renderFile(realPath, {_: req}), null, null)
+        }
+        else if (fileExt === 'html'){
+            console.log('HTML');
+            return callback(null, null, null);
 	 	} else {
 	 		// Don't have this format
 	 	}

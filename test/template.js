@@ -100,4 +100,27 @@ describe('Templates', function() {
 			});
 		});
 	});
+    context('HTML', function() {
+		context('Send (local object, html file path)', function() {
+			it('should get rendered html template', function(done) {
+				var obj = {name: 'Kenobi', request: false},
+					template = '/test/templates/sample.html';
+
+				kenobi(obj, template, function(page, res, err){
+					assert.equal(res, null);
+                    assert.equal(err, null);
+
+					fs.readFile(html, 'utf8', function(err, data){
+						if (err) assert.equal(err, null);
+						assert.equal(
+							page.replace(/\s+/g, ''),
+							data.replace(/\s+/g, '')
+						);
+
+						done();
+					});
+				});
+			});
+		});
+	});
 });
