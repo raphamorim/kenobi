@@ -33,4 +33,32 @@ describe('Templates', function() {
 			});
 		});
 	});
+	context('JADE', function() {
+		context('Send valid request and jade file', function() {
+			it('should get rendered jade template', function(done) {
+				var url = 'http://test.com',
+					obj = {'name': 'Kenobi'},
+					template = '/test/templates/sample.jade',
+					api = nock(url)
+						  .get('/')
+						  .reply(200, obj);
+
+				kenobi(url, template, function(page, res, err){
+					assert.equal(res.statusCode, 200);
+					assert.equal(typeof res, 'object');
+					assert.equal(err, null);
+
+					fs.readFile(html, 'utf8', function(err, data){
+						if (err) assert.equal(err, null);
+						assert.equal(
+							page.replace(/\s+/g, ''),
+							data.replace(/\s+/g, '')
+						);
+
+						done();
+					});
+				});
+			});
+		});
+	});
 });

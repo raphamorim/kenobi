@@ -23,14 +23,17 @@ var Kenobi = (function(req, path, callback) {
 
 	request(req, function(error, response, body) {
 		if (fileExt === 'ejs') {
-			if (typeof body === 'string') {
+			if (typeof body === 'string')
 				body = JSON.parse(JSON.stringify(eval('('+body+')')));
-			}
 
 	 		return callback(ejs.render(str, {_: body}), response, error);
 	 	}
-	 	else if (fileExt === 'jade')
-	 		return callback(jade.renderFile(realPath, {_: body}))
+	 	else if (fileExt === 'jade'){
+	 		if (typeof body === 'string')
+				body = JSON.parse(JSON.stringify(eval('('+body+')')));
+
+	 		return callback(jade.renderFile(realPath, {_: body}), response, error)
+	 	}
 	 	else
 	 		return callback(response, error)
 	});
