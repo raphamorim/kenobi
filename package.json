@@ -23,6 +23,6 @@
   },
   "devDependencies": {
     "mocha": "*",
-    "nock": "^0.59.1"
+    "nock": "~0.59.1"
   }
 }
