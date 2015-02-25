@@ -7,8 +7,14 @@ var Kenobi = (function(req, path, callback) {
 
 	if (typeof path === 'string') {
 		fileExt = path.split('.').pop();
+		var dirname = __dirname,
+			dir = dirname.split('/');
 
-		var realPath = __dirname + '/../..' + path,
+		if (dir[dir.length - 2] === 'node_modules') {
+			dirname = dirname + '/../..';
+		}
+
+		var realPath = __dirname + path,
 			str = fs.readFileSync(realPath, 'utf8');
 	}
 
@@ -16,8 +22,13 @@ var Kenobi = (function(req, path, callback) {
 		callback = path;
 
 	request(req, function(error, response, body) {
-		if (fileExt === 'ejs')
-	 		return callback(ejs.render(str, {_: body}))
+		if (fileExt === 'ejs') {
+			if (typeof body === 'string') {
+				body = JSON.parse(JSON.stringify(eval('('+body+')')));
+			}
+
+	 		return callback(ejs.render(str, {_: body}), response, error);
+	 	}
 	 	else if (fileExt === 'jade')
 	 		return callback(jade.renderFile(realPath, {_: body}))
 	 	else

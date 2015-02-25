@@ -2,8 +2,6 @@ var kenobi = require('../kenobi'),
 	nock   = require('nock'),
 	assert = require('assert');
 
-// TODO: test ejs, jade, html render
-
 describe('Requests', function() {
 	context('Valid requests', function() {
 		context('Url as param', function() {
