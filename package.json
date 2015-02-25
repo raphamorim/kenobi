@@ -19,7 +19,7 @@
   "dependencies": {
     "ejs": "~0.8.5",
     "jade": "~1.6.0",
-    "request": "^2.42.0"
+    "request": "~2.42.0"
   },
   "devDependencies": {
     "mocha": "*",
