@@ -1,5 +1,13 @@
 # Changelog
 
+## Vr. 0.2.0
+
+- Major rewirte
+- Test Case
+- Support **HTML** (basic features)
+- Return response and error in all methods
+- Better definitions in docs
+
 ## Vr. 0.1.25
 
 - Return error in methods

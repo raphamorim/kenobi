@@ -1,7 +1,7 @@
 {
   "name": "kenobi",
-  "version": "0.1.25",
-  "description": "Render external objects and array in view engines",
+  "version": "0.2.0",
+  "description": "Render objects for view engines or static html",
   "main": "index.js",
   "scripts": {
     "test": "make test"
@@ -18,11 +18,11 @@
   "homepage": "https://github.com/raphamorim/kenobi",
   "dependencies": {
     "ejs": "~0.8.5",
-    "jade": "^1.6.0",
-    "request": "^2.42.0"
+    "jade": "~1.6.0",
+    "request": "~2.42.0"
   },
   "devDependencies": {
     "mocha": "*",
-    "nock": "^0.59.1"
+    "nock": "~0.59.1"
   }
 }
