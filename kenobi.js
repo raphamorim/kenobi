@@ -17,13 +17,14 @@
  *
  */
 
-var Render = require('./src/render.js'),
-	request = require('request'),
+var request = require('request'),
+	render = require('./src/render.js'),
 	getFileData = require('./src/file.js')();
 
 var Kenobi = (function(req, path, fn) {
 	var fileData = getFileData(path, __dirname);
 
+	// Get extension data
 	var extension = fileData[0],
 		absolutePath = fileData[1],
 		fileText = fileData[2];
@@ -32,20 +33,17 @@ var Kenobi = (function(req, path, fn) {
 	if (typeof path === 'function')
 		fn = path;
 
-	//TODO: IF NOT HAVE DEFINED FILE EXTENSION
-
-	if (req === null ||
-		typeof req.request === 'undefined' ||
+	if (req === null || typeof req.request === 'undefined' ||
 		req.request === true) {
 
 		request(req, function(error, response, body) {
-			Render(body, extension, absolutePath, fileText, fn, response, error);
+			render(body, extension, absolutePath, fileText, fn, response, error);
 		});
 
 	} else if (req.request === false) {
 		delete req.request;
 
-		Render(req, extension, absolutePath, fileText, fn);
+		render(req, extension, absolutePath, fileText, fn);
 	}
 });
 

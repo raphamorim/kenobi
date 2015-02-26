@@ -36,7 +36,7 @@ function Render(body, ext, path, text, fn, response, error) {
 
 		return fn(text, response, error)
 
-	// WITHOUT TEMPLATE
+	// WITHOUT FILE (return only response)
 	} else {
 		return fn(response, error)
 	}

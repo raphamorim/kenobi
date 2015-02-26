@@ -5,8 +5,6 @@ var kenobi = require('../kenobi'),
 
 var html = __dirname + '/templates/sample.html';
 
-// TODO: test ejs, jade, html render
-
 describe('Templates', function() {
 	context('EJS', function() {
 		context('Send (valid request, ejs file path)', function() {
