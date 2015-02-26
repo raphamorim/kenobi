@@ -13,7 +13,7 @@ describe('Templates', function() {
 			it('should get rendered ejs template', function(done) {
 				var url = 'http://test.com',
 					obj = {'name': 'Kenobi'},
-					template = '/test/templates/sample.ejs',
+					template = '/test/templates/template.ejs',
 					api = nock(url)
 						  .get('/')
 						  .reply(200, obj);
@@ -23,9 +23,9 @@ describe('Templates', function() {
 					assert.equal(typeof res, 'object');
 					assert.equal(err, null);
 
-					fs.readFile(html, 'utf8', function(err, data){
+					fs.readFile(html, 'utf8', function(err, expected){
 						if (err) assert.equal(err, null);
-						assert.equal(data, page);
+						assert.equal(expected, page);
 
 						done();
 					});
@@ -35,15 +35,15 @@ describe('Templates', function() {
 		context('Send (local object, ejs file path)', function() {
 			it('should get rendered ejs template', function(done) {
 				var obj = {name: 'Kenobi', request: false},
-					template = '/test/templates/sample.ejs';
+					template = '/test/templates/template.ejs';
 
 				kenobi(obj, template, function(page, res, err){
 					assert.equal(res, null);
 					assert.equal(err, null);
 
-					fs.readFile(html, 'utf8', function(err, data){
+					fs.readFile(html, 'utf8', function(err, expected){
 						if (err) assert.equal(err, null);
-						assert.equal(data, page);
+						assert.equal(expected, page);
 
 						done();
 					});
@@ -56,7 +56,7 @@ describe('Templates', function() {
 			it('should get rendered jade template', function(done) {
 				var url = 'http://test.com',
 					obj = {'name': 'Kenobi'},
-					template = '/test/templates/sample.jade',
+					template = '/test/templates/template.jade',
 					api = nock(url)
 						  .get('/')
 						  .reply(200, obj);
@@ -66,11 +66,11 @@ describe('Templates', function() {
 					assert.equal(typeof res, 'object');
 					assert.equal(err, null);
 
-					fs.readFile(html, 'utf8', function(err, data){
+					fs.readFile(html, 'utf8', function(err, expected){
 						if (err) assert.equal(err, null);
 						assert.equal(
 							page.replace(/\s+/g, ''),
-							data.replace(/\s+/g, '')
+							expected.replace(/\s+/g, '')
 						);
 
 						done();
@@ -81,17 +81,17 @@ describe('Templates', function() {
 		context('Send (local object, jade file path)', function() {
 			it('should get rendered jade template', function(done) {
 				var obj = {name: 'Kenobi', request: false},
-					template = '/test/templates/sample.jade';
+					template = '/test/templates/template.jade';
 
 				kenobi(obj, template, function(page, res, err){
 					assert.equal(res, null);
 					assert.equal(err, null);
 
-					fs.readFile(html, 'utf8', function(err, data){
+					fs.readFile(html, 'utf8', function(err, expected){
 						if (err) assert.equal(err, null);
 						assert.equal(
 							page.replace(/\s+/g, ''),
-							data.replace(/\s+/g, '')
+							expected.replace(/\s+/g, '')
 						);
 
 						done();
@@ -101,20 +101,46 @@ describe('Templates', function() {
 		});
 	});
     context('HTML', function() {
+    	context('Send (valid request, html file path)', function() {
+			it('should get rendered html template', function(done) {
+				var url = 'http://test.com',
+					obj = {'name': 'Kenobi'},
+					template = '/test/templates/template.html';
+					api = nock(url)
+						  .get('/')
+						  .reply(200, obj);
+
+				kenobi(url, template, function(page, res, err){
+					assert.equal(res.statusCode, 200);
+					assert.equal(typeof res, 'object');
+					assert.equal(err, null);
+
+					fs.readFile(html, 'utf8', function(err, expected){
+						if (err) assert.equal(err, null);
+						assert.equal(
+							page.replace(/\s+/g, ''),
+							expected.replace(/\s+/g, '')
+						);
+
+						done();
+					});
+				});
+			});
+		});
 		context('Send (local object, html file path)', function() {
 			it('should get rendered html template', function(done) {
 				var obj = {name: 'Kenobi', request: false},
-					template = '/test/templates/sample.html';
+					template = '/test/templates/template.html';
 
 				kenobi(obj, template, function(page, res, err){
 					assert.equal(res, null);
                     assert.equal(err, null);
 
-					fs.readFile(html, 'utf8', function(err, data){
+					fs.readFile(html, 'utf8', function(err, expected){
 						if (err) assert.equal(err, null);
 						assert.equal(
 							page.replace(/\s+/g, ''),
-							data.replace(/\s+/g, '')
+							expected.replace(/\s+/g, '')
 						);
 
 						done();
