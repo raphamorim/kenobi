@@ -78,6 +78,28 @@ For return only response object:
     });
 
 
+## Using HTML instead template option:
+
+This option is still very limited, the current version is still not possible to make operations and comparisons with the variables passed to the html. Ex:
+
+**anything.js**
+
+    var object = {name: 'Obi Wan'};
+
+    kenobi(object, 'index.html', function(page, response, err){
+        if (err) res.end(err);
+        res.send(page);
+    });
+
+**index.html**
+
+    ...
+    <body>
+      <h1>{{name}}</h1>
+    </body>
+    ...
+
+
 ## Callback Return
 
 page `String` = result of rendering
