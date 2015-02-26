@@ -1,8 +1,6 @@
 /*
-	Name: fileData
-	Return: Array
-	Default: [null, null, null]
-	ArrayData: [0] = Extension, [1] = Absolute path, [2] = File Text
+	@name: Render
+	@return: function
 */
 
 var ejs = require('ejs'),
@@ -12,7 +10,7 @@ function Render(body, ext, path, text, fn, response, error) {
 	// EJS
 	if (ext === 'ejs') {
 		if (typeof body === 'string')
-			body = JSON.parse(JSON.stringify(eval('(' + body + ')')));
+			body = JSON.parse(JSON.stringify(eval('(' + body + ')')))
 
 		return fn(ejs.render(text, {
 			_: body
@@ -21,7 +19,7 @@ function Render(body, ext, path, text, fn, response, error) {
 	// JADE
 	} else if (ext === 'jade') {
 		if (typeof body === 'string')
-			body = JSON.parse(JSON.stringify(eval('(' + body + ')')));
+			body = JSON.parse(JSON.stringify(eval('(' + body + ')')))
 
 		return fn(jade.renderFile(path, {
 			_: body
@@ -29,10 +27,9 @@ function Render(body, ext, path, text, fn, response, error) {
 
 	// HTML
 	} else if (ext === 'html') {
+		return fn(null, null, null)
 
-		return fn(null, null, null);
-
-	// PURE REQUEST
+	// WITHOUT TEMPLATE
 	} else {
 		return fn(response, error)
 	}

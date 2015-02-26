@@ -1,8 +1,8 @@
 /*
-	Name: fileData
-	Return: Array
-	Default: [null, null, null]
-	ArrayData: [0] = Extension, [1] = Absolute path, [2] = File Text
+	@name: FileData
+	@return: Array
+	@default: [null, null, null]
+	@arrayData: [0] = Extension, [1] = Absolute path, [2] = File Text
 */
 
 var fs = require('fs');
