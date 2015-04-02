@@ -22,7 +22,7 @@
     "request": "~2.42.0"
   },
   "devDependencies": {
-    "mocha": "*",
+    "mocha": "^2.2.1",
     "nock": "~0.59.1"
   }
 }
