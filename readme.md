@@ -60,15 +60,17 @@ So, then we can treat the object in view. Then a global object is returned. Acce
 
 For return only response object:
 
-	kenobi(options, function(response, err){
-  	 if (err) res.end(err);
-     res.send(response);
-  });
+    kenobi(options, function(response, err){
+  	    if (err) res.end(err);
+        res.send(response);
+     });
 
 
 ## Send only a local object (without external request) and render in template:
 
-    var object = {name: 'luke'};
+Use request false
+
+    var object = {name: 'luke', request: false};
 
     kenobi(object, pathTofile, function(page, response, err){
         // For local objects cases, response always be null
