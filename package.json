@@ -1,6 +1,6 @@
 {
   "name": "kenobi",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Render objects for view engines or static html",
   "main": "index.js",
   "scripts": {

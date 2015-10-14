@@ -12,9 +12,12 @@ function Render(body, ext, path, text, fn, response, error) {
 		if (typeof body === 'string')
 			body = JSON.parse(JSON.stringify(eval('(' + body + ')')))
 
-		return fn(ejs.render(text, {
+		ejs.renderFile(path, {
 			_: body
-		}), response, error)
+		},function(err, result) {
+    		if (err) console.log(err);
+    		return fn(result, response, error)
+		});
 
 	// JADE
 	} else if (ext === 'jade') {
