@@ -178,6 +178,13 @@ The first argument can be either a `url` or an object. The only required option 
 - [Ejs](https://github.com/visionmedia/ejs)
 - [Jade](https://github.com/visionmedia/jade)
 
+## Who's using Kenobi
+
+- [3days](http://3days.com.br)
+- [ShotHunt](http://shothunt.herokuapp.com)
+
+You're using Kenobi too? Let me know :)
+
 ## History
 
 See [Changelog](docs/changelog.md) for more details.
